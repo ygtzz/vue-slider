@@ -1,28 +1,28 @@
-## vue-swiper
+## vue-slider
 
-a vue swiper component
+a vue slider component
 
 ### Quickstart
 ```javascript
-import {swiper, swiperItem } form 'VueSwiper';
-Vue.component('c-swiper',swiper);
-Vue.component('c-swiperItem',swiperItem);
+import {slider, sliderItem } form 'VueSwiper';
+Vue.component('c-slider',slider);
+Vue.component('c-sliderItem',sliderItem);
 ```
 ```html
- <c-swiper class="swiper" :loop="true">
-    <c-swiper-item v-for="n in list" :key="'swiper' + n">
+ <c-slider class="slider" :loop="true">
+    <c-slider-item v-for="n in list" :key="'slider' + n">
         <div class="slide">{{n}}</div>
-    </c-swiper-item>
-</c-swiper>
+    </c-slider-item>
+</c-slider>
 ```
 
 ### Params
 
-`swiper`
+`slider`
     - `speed`: the scroll speed every swipe
     - `loop` : whether scroll loop, default is true 
     - `auto` : whether scroll autoplay,defalut is true
 
 ### Preview
 
-![swiper image]('./doc/swiper.png')
+![slider image](./doc/slider.png)
