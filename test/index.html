@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>vue slider example</title>
+        <meta charset="utf-8">
+        <meta name="hotcss" content="design-width=750">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta content="black" name="apple-mobile-web-app-status-bar-style">
+        <meta content="telephone=no" name="format-detection">
+        <link rel="stylesheet" href="../dist/vue-slider.css" />
+        <!--hotcss.js-->
+        <script>
+            !function(a,b){"use strict";var c={};!function(){var i,j,k,l,m,n,d=b.querySelector('meta[name="viewport"]'),e=b.querySelector('meta[name="hotcss"]'),f=a.devicePixelRatio||1,g=540,h=0;f=f>=3?3:f>=2?2:1,e&&(i=e.getAttribute("content"),i&&(j=i.match(/initial\-dpr=([\d\.]+)/),j&&(f=parseFloat(j[1])),k=i.match(/max\-width=([\d\.]+)/),k&&(g=parseFloat(k[1])),l=i.match(/design\-width=([\d\.]+)/),l&&(h=parseFloat(l[1])))),b.documentElement.setAttribute("data-dpr",f),c.dpr=f,b.documentElement.setAttribute("max-width",g),c.maxWidth=g,h&&b.documentElement.setAttribute("design-width",h),c.designWidth=h,m=1/f,n="width=device-width, initial-scale="+m+", minimum-scale="+m+", maximum-scale="+m+", user-scalable=no",d?d.setAttribute("content",n):(d=b.createElement("meta"),d.setAttribute("name","viewport"),d.setAttribute("content",n),b.head.appendChild(d))}(),c.px2rem=function(a,b){return b||(b=parseInt(c.designWidth,10)),320*parseInt(a,10)/b/20},c.rem2px=function(a,b){return b||(b=parseInt(c.designWidth,10)),20*a*b/320},c.mresize=function(){var d=b.documentElement.getBoundingClientRect().width||a.innerWidth;return c.maxWidth&&d/c.dpr>c.maxWidth&&(d=c.maxWidth*c.dpr),d?(b.documentElement.style.fontSize=20*d/320+"px",c.callback&&c.callback(),void 0):!1},c.mresize(),a.addEventListener("resize",function(){clearTimeout(c.tid),c.tid=setTimeout(c.mresize,33)},!1),a.addEventListener("load",c.mresize,!1),setTimeout(function(){c.mresize()},333),a.hotcss=c}(window,document),function(a,b){"use strict";var c={};!function(){var i,j,k,l,m,n,d=b.querySelector('meta[name="viewport"]'),e=b.querySelector('meta[name="hotcss"]'),f=a.devicePixelRatio||1,g=540,h=0;f=f>=3?3:f>=2?2:1,e&&(i=e.getAttribute("content"),i&&(j=i.match(/initial\-dpr=([\d\.]+)/),j&&(f=parseFloat(j[1])),k=i.match(/max\-width=([\d\.]+)/),k&&(g=parseFloat(k[1])),l=i.match(/design\-width=([\d\.]+)/),l&&(h=parseFloat(l[1])))),b.documentElement.setAttribute("data-dpr",f),c.dpr=f,b.documentElement.setAttribute("max-width",g),c.maxWidth=g,h&&b.documentElement.setAttribute("design-width",h),c.designWidth=h,m=1/f,n="width=device-width, initial-scale="+m+", minimum-scale="+m+", maximum-scale="+m+", user-scalable=no",d?d.setAttribute("content",n):(d=b.createElement("meta"),d.setAttribute("name","viewport"),d.setAttribute("content",n),b.head.appendChild(d))}(),c.px2rem=function(a,b){return b||(b=parseInt(c.designWidth,10)),320*parseInt(a,10)/b/20},c.rem2px=function(a,b){return b||(b=parseInt(c.designWidth,10)),20*a*b/320},c.mresize=function(){var d=b.documentElement.getBoundingClientRect().width||a.innerWidth;return c.maxWidth&&d/c.dpr>c.maxWidth&&(d=c.maxWidth*c.dpr),d?(b.documentElement.style.fontSize=20*d/320+"px",c.callback&&c.callback(),void 0):!1},c.mresize(),a.addEventListener("resize",function(){clearTimeout(c.tid),c.tid=setTimeout(c.mresize,33)},!1),a.addEventListener("load",c.mresize,!1),setTimeout(function(){c.mresize()},333),a.hotcss=c}(window,document);
+        </script>
+        <style>
+            .slider{background-image:url('http://pic2.ooopic.com/10/55/95/20b1OOOPICfa.jpg');background-size:cover;}
+            .slide{width:100%;height:300px;text-align:center;font-size:80px;line-height:300px;}
+            .slide:nth-child(1){background-color:pink;}
+            .slide:nth-child(2){background-color:lightgreen;}
+            .slide:nth-child(3){background-color:pink;}
+            .luck-unit{width:174px;height:167px;background-color:green;}
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="test stage">
+                <h2>slider</h2>
+                <c-slider class="slider" :loop="true">
+                    <c-slider-item v-for="n in list" :key="'slider' + n">
+                        <div class="slide">{{n}}</div>
+                    </c-slider-item>
+                </c-slider>
+            </div>
+        </div>
+        <script src="../node_modules/vue/dist/vue.js"></script>
+        <script src="../dist/vue-slider.js"></script>
+        <script type="text/javascript" src="./dist/test.js"></script>
+    </body>
+</html>
