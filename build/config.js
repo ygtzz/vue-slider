@@ -3,7 +3,7 @@ var path = require('path');
 var sBase = './src/';
 module.exports = {
     sBase: sBase,
-    sDist: '/dist',
+    sDist: path.resolve(__dirname, '../dist'),
     sDest: './dist',
     entry: {
         index: sBase + '/index.js'

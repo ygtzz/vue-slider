@@ -5,7 +5,9 @@ var config = require('./config');
 var merge = require('lodash/merge');
 var sBase = config.sBase;
 
-var aPlugin = [];
+var aPlugin = [
+    new CleanWebpackPlugin(['dist'])
+];
 var aPostcss = [autoprefixer({browsers: ['> 5%','ie 9']})];
 if(config.enableRem){
     aPostcss.push(require('postcss-plugin-px2rem')(config.px2remOptions));
@@ -18,13 +20,13 @@ module.exports = {
         
     },
     module: {
-        loaders: [
-            {test: /\.js$/, loader: "babel", exclude: /node_modules/},
-            {test: /\.vue$/, loader: 'vue'},
+        rules: [
+            {test: /\.js$/, loader: "babel-loader", exclude: /node_modules/},
+            {test: /\.vue$/, loader: 'vue-loader'},
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url',
-                query: {
+                loader: 'url-loader',
+                options: {
                     limit: 1,
                     name:'/static/fonts/[name].[ext]'
                 }
@@ -32,15 +34,15 @@ module.exports = {
         ]
     },
     plugins: aPlugin,
-    postcss: function () {
-        return aPostcss;
-    },
+    // postcss: function () {
+    //     return aPostcss;
+    // },
     externals:{
         vue: 'Vue'
     },
     resolve:{
-        modulesDirectories: [ "node_modules",sBase],
-        extensions:['','.js','.json'],
+        modules: [ "node_modules",sBase],
+        extensions:['.js','.json'],
         alias: {
             'vue': 'vue/dist/vue.js'
         }

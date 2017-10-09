@@ -1,1 +1,203 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.VueSlider=e():t.VueSlider=e()}(this,function(){return function(t){function e(i){if(n[i])return n[i].exports;var o=n[i]={exports:{},id:i,loaded:!1};return t[i].call(o.exports,o,o.exports,e),o.loaded=!0,o.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0}),e.sliderItem=e.slider=void 0;var o=n(1),r=i(o),s=n(5),a=i(s);e.slider=r.default,e.sliderItem=a.default},function(t,e,n){var i,o;n(2),i=n(3);var r=n(4);o=i=i||{},"object"!=typeof i.default&&"function"!=typeof i.default||(o=i=i.default),"function"==typeof o&&(o=o.options),o.render=r.render,o.staticRenderFns=r.staticRenderFns,o._scopeId="data-v-523b028a",t.exports=i},function(t,e){},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"c-slider",created:function(){},mounted:function(){var t=this;this.$nextTick(function(){t.fBindEvent(),t.init()})},destroyed:function(){clearInterval(this.timer)},props:{speed:{type:Number,default:300},loop:{type:Boolean,default:!0},auto:{type:Number,default:3e3}},data:function(){return{width:0,amount:0,startX:0,startTime:0,offsetX:0,idx:0,direction:"horizontal",timer:"",touching:!1}},computed:{towards:function(){return this.offsetX<=0?"left":"right"}},methods:{init:function(){if(this.$children.length){if(this.width=this.$el.getBoundingClientRect().width,this.amount=this.$children.length,this.$children.forEach(function(t,e){t.style.webkitTransform="translate3d("+100*e+"%,0,0)"}),this.$children[this.amount-1].style.webkitTransform="translate3d(-100%,0,0)",!this.loop)throw new Error("component slider: only loop mode support auto play");this.auto>0&&this.amount>0&&this.fSetAutoPlay()}},fBindEvent:function(){var t=this,e=t.$el;e.addEventListener("touchstart",function(e){t.startX=e.touches[0].pageX,t.startTime=+new Date,t.offsetX=0,t.fStopAutoPlay()}),e.addEventListener("touchmove",function(e){e.preventDefault(),t.touching=!0,t.offsetX=e.touches[0].pageX-t.startX,t.fSwipePage()}),e.addEventListener("touchend",function(e){t.touching=!1,t.fGoPage(),t.fSetAutoPlay()})},fSwipePage:function(){var t=this,e=t.fGetPageIndex(t.idx);e.forEach(function(e){t.$children[e]&&(t.$children[e].style.webkitTransition="")}),e.forEach(function(e,n){t.$children[e]&&(t.$children[e].style.webkitTransform="translate3d("+(100*(n-1)+t.offsetX/t.width*100)+"%,0,0)")})},fGoPage:function(){var t=this,e=t.width/4,n=+new Date;n-t.startTime>300?t.offsetX>=e?t.fGoIndex(-1):t.offsetX<=-e?t.fGoIndex(1):t.fGoIndex(0):t.offsetX>50?t.fGoIndex(-1):t.offsetX<-50?t.fGoIndex(1):t.fGoIndex(0)},fGoIndex:function(t){var e=this,n=e.idx+t,i=e.fGetPageIndex(n);e.idx=i[1];var o=i,r=[];"left"==e.towards&&0!=t?(o=i.slice(0,-1),r=i.slice(-1)):"right"==e.towards&&0!=t&&(o=i.slice(1),r=i.slice(0,1)),o.forEach(function(t){e.$children[t]&&(e.$children[t].style.webkitTransition="-webkit-transform "+e.speed+"ms ease-out")}),r.forEach(function(t){e.$children[t]&&(e.$children[t].style.webkitTransition="")}),i.forEach(function(t,n){e.$children[t]&&(e.$children[t].style.webkitTransform="translate3d("+100*(n-1)+"%,0,0)")})},fGetPageIndex:function(t){var e=this,n=e.$children.length;e.loop?t>n-1?t=0:t<0&&(t=n-1):t>n-1?t=n-1:t<0&&(t=0);var i=t-1,o=t+1;e.loop?(i=i<0?n-1:i,o=o>n-1?0:o):(i=i<0?-1:i,o=o>n-1?n:o);var r=[i,t,o];return r},fSetAutoPlay:function(){var t=this;this.auto<=0||(this.fStopAutoPlay(),this.timer=setInterval(function(){t.fGoIndex(1)},this.auto))},fStopAutoPlay:function(){clearInterval(this.timer)}},components:{}}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"slider"},[n("div",{ref:"slideWrapper",staticClass:"slide-wrap"},[t._t("default")],2),t._v(" "),n("div",{staticClass:"pager-wrap"},[n("ul",{staticClass:"pagerList"},t._l(t.amount,function(e){return n("li",{key:"slider-dot"+e,staticClass:"pagerItem"},[n("span",{staticClass:"icon icon-dot",class:{active:e==t.idx+1}})])}))])])},staticRenderFns:[]}},function(t,e,n){var i,o;n(6),i=n(7);var r=n(8);o=i=i||{},"object"!=typeof i.default&&"function"!=typeof i.default||(o=i=i.default),"function"==typeof o&&(o=o.options),o.render=r.render,o.staticRenderFns=r.staticRenderFns,o._scopeId="data-v-00285a24",t.exports=i},function(t,e){},function(t,e){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"c-slider-item",created:function(){this.$parent.init()},data:function(){return{style:{webkitTransform:"",webkitTransiton:""}}}}},function(t,e){t.exports={render:function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"sliderItem",style:t.style},[t._t("default")],2)},staticRenderFns:[]}}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["VueSlider"] = factory();
+	else
+		root["VueSlider"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  scopeId,
+  cssModules
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  // inject cssModules
+  if (cssModules) {
+    var computed = Object.create(options.computed || null)
+    Object.keys(cssModules).forEach(function (key) {
+      var module = cssModules[key]
+      computed[key] = function () { return module }
+    })
+    options.computed = computed
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  null,
+  /* template */
+  null,
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/mengff/Downloads/workspace/github/vue-slider/src/slider.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  null,
+  /* template */
+  null,
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/mengff/Downloads/workspace/github/vue-slider/src/sliderItem.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.sliderItem = exports.slider = undefined;
+
+var _slider = __webpack_require__(1);
+
+var _slider2 = _interopRequireDefault(_slider);
+
+var _sliderItem = __webpack_require__(2);
+
+var _sliderItem2 = _interopRequireDefault(_sliderItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.slider = _slider2.default;
+exports.sliderItem = _sliderItem2.default;
+
+/***/ })
+/******/ ]);
+});
