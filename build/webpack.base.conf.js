@@ -8,11 +8,6 @@ var sBase = config.sBase;
 var aPlugin = [
     new CleanWebpackPlugin(['dist'])
 ];
-var aPostcss = [autoprefixer({browsers: ['> 5%','ie 9']})];
-if(config.enableRem){
-    aPostcss.push(require('postcss-plugin-px2rem')(config.px2remOptions));
-    aPostcss.push(require('postcss-flexible')(config.px2rem));    
-}
 
 module.exports = {
     entry: config.entry,
@@ -22,7 +17,6 @@ module.exports = {
     module: {
         rules: [
             {test: /\.js$/, loader: "babel-loader", exclude: /node_modules/},
-            {test: /\.vue$/, loader: 'vue-loader'},
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url-loader',
