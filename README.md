@@ -19,9 +19,9 @@ Vue.component('c-sliderItem',sliderItem);
 ### Params
 
 `slider`
-    * `speed`: the scroll speed every swipe
-    * `loop` : whether scroll loop, default is true 
-    * `auto` : whether scroll autoplay,defalut is true
+-  `speed`: the scroll speed every swipe
+-  `loop` : whether scroll loop, default is true 
+-  `auto` : whether scroll autoplay,defalut is true
 
 ### Preview
 
