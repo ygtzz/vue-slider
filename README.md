@@ -4,7 +4,17 @@ a vue slider component
 
 ### Quickstart
 ```javascript
-import {slider, sliderItem } form 'VueSwiper';
+require('we-vue-slider/dist/vue-slider.css');
+
+// in ES6 modules
+import { slider, sliderItem } from 'we-vue-slider';
+
+// in CommonJS
+const { slider, sliderItem } = require('we-vue-slider');
+
+// in Global variable
+const { slider, sliderItem } = VueSwiper;
+
 Vue.component('c-slider',slider);
 Vue.component('c-sliderItem',sliderItem);
 ```
