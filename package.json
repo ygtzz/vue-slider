@@ -1,6 +1,6 @@
 {
   "name": "we-vue-slider",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a vue slider component",
   "main": "dist/vue-slider.js",
   "scripts": {

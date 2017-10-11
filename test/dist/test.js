@@ -73,8 +73,10 @@
 "use strict";
 
 
-var vueSlider = VueSlider.slider;
-var vueSliderItem = VueSlider.sliderItem;
+var _VueSlider = VueSlider,
+    slider = _VueSlider.slider,
+    sliderItem = _VueSlider.sliderItem;
+
 
 new Vue({
   name: 'c-app',
@@ -93,8 +95,8 @@ new Vue({
   },
 
   components: {
-    'c-slider': vueSlider,
-    'c-slider-item': vueSliderItem
+    'c-slider': slider,
+    'c-slider-item': sliderItem
   }
 });
 

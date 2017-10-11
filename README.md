@@ -13,7 +13,7 @@ import { slider, sliderItem } from 'we-vue-slider';
 const { slider, sliderItem } = require('we-vue-slider');
 
 // in Global variable
-const { slider, sliderItem } = VueSwiper;
+const { slider, sliderItem } = VueSlider;
 
 Vue.component('c-slider',slider);
 Vue.component('c-sliderItem',sliderItem);

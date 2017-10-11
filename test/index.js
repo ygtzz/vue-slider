@@ -1,5 +1,4 @@
-const vueSlider = VueSlider.slider;
-const vueSliderItem = VueSlider.sliderItem;
+const { slider, sliderItem } = VueSlider;
 
 new Vue({
   name:'c-app',
@@ -15,7 +14,7 @@ new Vue({
     }
   },
   components: {
-    'c-slider': vueSlider,
-    'c-slider-item': vueSliderItem
+    'c-slider': slider,
+    'c-slider-item': sliderItem
   }
 });

@@ -13,11 +13,11 @@ var aPlugin = [
         'process.env.NODE_ENV': JSON.stringify('production'),
         __DEV__: JSON.stringify(JSON.parse('false'))
     }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //     compress: {
-    //         warnings: false
-    //     }
-    // })
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    })
 ];
 
 module.exports = merge(baseWebapckConfig, {
@@ -35,7 +35,7 @@ module.exports = merge(baseWebapckConfig, {
                     loaders: {
                         css: ExtractTextPlugin.extract({
                             use:[
-                                {loader:'css-loader'},
+                                {loader:'css-loader',options:{minimize:true}},
                                 {loader:'postcss-loader'}
                             ],
                             fallback:[
@@ -44,7 +44,7 @@ module.exports = merge(baseWebapckConfig, {
                         }),
                         sass: ExtractTextPlugin.extract({
                             use:[
-                                {loader:'css-loader'},
+                                {loader:'css-loader',options:{minimize:true}},
                                 {loader:'postcss-loader'},
                                 {loader:'sass-loader'}
                             ]
@@ -56,7 +56,7 @@ module.exports = merge(baseWebapckConfig, {
                 test: /\.css$/, 
                 use: ExtractTextPlugin.extract({
                     use:[
-                        {loader:'css-loader'},
+                        {loader:'css-loader',options:{minimize:true}},
                         {loader:'postcss-loader'}
                     ],
                     fallback:[
@@ -68,31 +68,11 @@ module.exports = merge(baseWebapckConfig, {
                 test: /\.scss$/, 
                 use: ExtractTextPlugin.extract({
                     use:[
-                        {loader:'css-loader'},
+                        {loader:'css-loader',options:{minimize:true}},
                         {loader:'postcss-loader'},
                         {loader:'sass-loader'}
                     ]
                 })
-            },
-            {
-                test: /\.(svg)(\?.*)?$/,
-                loader:'url',
-                options: {
-                    limit: 2048,
-                    name: '/static/images/[name].[ext]'
-                }
-            },
-            {
-                test: /\.(png|jpe?g|gif)(\?.*)?$/,
-                use: [
-                    {
-                        loader:'url-loader',
-                        options:{
-                            limit:2048,
-                            name:'/static/images/[name].[ext]'
-                        }
-                    }
-                ]
             }
         ]
     },
