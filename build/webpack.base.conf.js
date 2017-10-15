@@ -16,21 +16,10 @@ module.exports = {
     },
     module: {
         rules: [
-            {test: /\.js$/, loader: "babel-loader", exclude: /node_modules/},
-            {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
-                options: {
-                    limit: 1,
-                    name:'/static/fonts/[name].[ext]'
-                }
-            }
+            {test: /\.js$/, loader: "babel-loader", exclude: /node_modules/}
         ]
     },
     plugins: aPlugin,
-    // postcss: function () {
-    //     return aPostcss;
-    // },
     externals:{
         vue: 'Vue'
     },
