@@ -2,6 +2,14 @@
 
 a vue slider component
 
+### Install
+
+```bash
+npm install vue-slider2 -S
+
+yarn add vue-slider2
+```
+
 ### Quickstart
 ```javascript
 require('we-vue-slider/dist/vue-slider.css');
@@ -28,7 +36,7 @@ Vue.component('c-sliderItem',sliderItem);
 
 ### Params
 
-`slider`
+`props`
 -  `speed`: the scroll speed every swipe
 -  `loop` : whether scroll loop, default is true 
 -  `auto` : whether scroll autoplay,defalut is true
